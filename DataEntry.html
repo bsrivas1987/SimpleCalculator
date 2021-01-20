@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title> Simple Calculator </title>
+        <script>
+             function getData(){
+                let button = document.getElementById("Submit");
+                button.addEventListener("click",displayData,false);
+                displayData();
+
+            }
+
+                  function displayData(){
+
+
+                    let display_data = document.getElementById('display_data');
+                    let val = ["{{ value1 }}", "{{ value2 }}", "{{ operand }}", "{{ result }}"]
+
+                    window.localStorage.setItem("testKey", JSON.stringify(val));
+
+                    let test = JSON.parse(localStorage.getItem("testKey"));
+
+                    if ({{ result }}) {
+                        display_data.innerHTML = display_data.innerHTML+"The Result of " + test[0] + " " + test[2] + " " + test[1] + " is " + test[3] + "<br>";
+                    } else {
+                        display_data.innerHTML += "";
+                    }
+
+
+            }
+
+             window.addEventListener("load",getData,false);
+        </script>
+    </head>
+    <body>
+        <section id="main">
+           <p> SIMPLE CALCULATOR </p>
+
+        <form action="/" method="post">
+            Enter Value 1:
+            <input type="text" name="val1"><br>
+            Enter Value 2:
+            <input type="text" name="val2"><br>
+            Choose Calculation :
+            <input type="radio" name="calc" value="Add"> Add
+            <input type="radio" name="calc" value="Subtract"> Subtract
+            <input type="radio" name="calc" value="Multiply"> Multiply
+            <input type="radio" name="calc" value="Divide"> Divide <br><br>
+            <button type="Submit" id="Submit" value="Submit"> Calculate</button>
+             </form>
+        </section>
+        <section id="display_data">
+
+        </section>
+
+    </body>
+
+</html>
